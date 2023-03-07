@@ -35,7 +35,7 @@ export async function handler(event, context) {
             return {
                 statusCode: 303,
                 headers: {
-                    "Location": `/error?msg=${encodeURIComponent("You cannot submit ban appeals with this Discord account.")}`,
+                    "Location": `/error?msg=${encodeURIComponent("Met dit Discord-account kun je geen Appeals versturen met een ban.")}`,
                 },
             };
         }
@@ -46,7 +46,7 @@ export async function handler(event, context) {
                 timestamp: new Date().toISOString(),
                 fields: [
                     {
-                        name: "Submitter",
+                        name: "Indiener",
                         value: `<@${userInfo.id}> (${userInfo.username}#${userInfo.discriminator})`
                     },
                     {
@@ -88,7 +88,7 @@ export async function handler(event, context) {
                     components: [{
                         type: 2,
                         style: 5,
-                        label: "Accepteer appeal en unban user",
+                        label: "Accepteer Appeal En Unban Gebruiker",
                         url: `${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))}`
                     }]
                 }];
@@ -119,7 +119,7 @@ export async function handler(event, context) {
             }
         } else {
             console.log(JSON.stringify(await result.json()));
-            throw new Error("Failed to submit message");
+            throw new Error("Kan bericht niet verzenden");
         }
     }
 
