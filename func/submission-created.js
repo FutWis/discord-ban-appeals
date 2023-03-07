@@ -42,7 +42,7 @@ export async function handler(event, context) {
         
         const message = {
             embed: {
-                title: "New appeal submitted!",
+                title: "Nieuw Appeal Verstuurd!",
                 timestamp: new Date().toISOString(),
                 fields: [
                     {
@@ -50,15 +50,15 @@ export async function handler(event, context) {
                         value: `<@${userInfo.id}> (${userInfo.username}#${userInfo.discriminator})`
                     },
                     {
-                        name: "Why were you banned?",
+                        name: "Waarom ben je gebanned of gedempt?",
                         value: payload.banReason.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
-                        name: "Why do you feel you should be unbanned?",
+                        name: "Waarom denk jij dat je geunbanned mag worden?",
                         value: payload.appealText.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
-                        name: "What will you do to avoid being banned in the future?",
+                        name: "Wat doe jij in de toekomst om niet meer gebanned te worden?",
                         value: payload.futureActions.slice(0, MAX_EMBED_FIELD_CHARS)
                     }
                 ]
@@ -88,7 +88,7 @@ export async function handler(event, context) {
                     components: [{
                         type: 2,
                         style: 5,
-                        label: "Approve appeal and unban user",
+                        label: "Accepteer appeal en unban user",
                         url: `${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))}`
                     }]
                 }];
